@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Website Development Across Tamil Nadu | Noctis Technologies</title>
+<meta name="description" content="Noctis Technologies provides website development, e-commerce and SEO services remotely to businesses across Tamil Nadu. Explore our service-area directory.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.noctistechnologies.gt.tc/locations/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Noctis Technologies">
+<meta property="og:title" content="Tamil Nadu Service Areas | Noctis Technologies">
+<meta property="og:description" content="Website development, e-commerce and SEO services for businesses across Tamil Nadu.">
+<meta property="og:url" content="https://www.noctistechnologies.gt.tc/locations/">
+<meta name="theme-color" content="#0a0a0f">
+<style>
+:root{--bg:#0a0a0f;--panel:#14141d;--gold:#d7b75e;--text:#f5f4f0;--muted:#a7a5ad;--line:#292934}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+header{border-bottom:1px solid var(--line);padding:20px 0}.brand{font-weight:800;letter-spacing:.18em;color:var(--gold)}.hero{padding:70px 0 45px}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.05;letter-spacing:-.04em;margin:16px 0}.hero p{color:var(--muted);max-width:760px}
+.search{width:100%;padding:16px 18px;background:var(--panel);border:1px solid var(--line);color:var(--text);font:inherit;border-radius:10px;margin:24px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:20px 0 70px}
+.city-card{padding:17px;background:var(--panel);border:1px solid var(--line);border-radius:12px;transition:.2s}
+.city-card:hover{border-color:var(--gold);transform:translateY(-2px)}.city-card span{display:block;font-weight:650}.city-card small{color:var(--muted);font-size:11px}
+.note{border-left:2px solid var(--gold);padding:15px 18px;background:#17150f;color:var(--muted);font-size:13px;margin:28px 0}
+.cta{padding:35px;background:linear-gradient(135deg,#211d12,#14141d);border:1px solid #69572d;border-radius:16px;margin:30px 0 70px}
+.btn{display:inline-block;padding:12px 20px;background:var(--gold);color:#111;font-weight:700;border-radius:6px;margin-top:8px}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="https://www.noctistechnologies.gt.tc/">NOCTIS TECHNOLOGIES</a></div></header>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">Tamil Nadu · Remote-first service coverage</div>
+<h1>Websites for businesses<br>across <span style="color:var(--gold)">Tamil Nadu.</span></h1>
+<p>Noctis Technologies is based in the Tiruppur region and works remotely with businesses across Tamil Nadu. We build business websites, e-commerce experiences, custom web applications and practical SEO foundations. This is an initial city-and-town coverage directory, not a complete list of every urban local body in Tamil Nadu.</p>
+<div class="note">Service-area clarification: Noctis Technologies does not claim to maintain physical offices in every listed town. Services are delivered remotely, with project scope and availability confirmed directly.</div>
+<input id="citySearch" class="search" type="search" autocomplete="off" placeholder="Search your city or town…" aria-label="Search city or town">
+<div class="eyebrow">Browse service areas · <span id="locationCount">170</span> city / town search entries</div>
+</section>
+<section class="grid" id="cityGrid" aria-live="polite"></section>
+<p id="resultsStatus" class="note" role="status">Loading locations…</p>
+<section class="cta" id="contact">
+<div class="eyebrow">Start a project</div><h2>Need a website in your city?</h2>
+<p style="color:var(--muted)">Tell us your business type, location and goals. We will confirm the scope, timeline and quote before work begins.</p>
+<a class="btn" href="https://wa.me/9195432128730?text=Hello%20Noctis%20Technologies%2C%20I%20need%20a%20website%20for%20my%20business.">Discuss on WhatsApp ↗</a>
+</section>
+</main>
+<footer><div class="wrap">© 2026 Noctis Technologies · <a href="https://www.noctistechnologies.gt.tc/">Home</a> · <a href="mailto:hello@noctistechnologies.com">Email</a></div></footer>
+<script src="./locations-data.js"></script>
+<script>
+(function () {
+  "use strict";
+  const locations = Array.isArray(window.NOCTIS_LOCATIONS) ? window.NOCTIS_LOCATIONS : [];
+  const grid = document.getElementById("cityGrid");
+  const input = document.getElementById("citySearch");
+  const status = document.getElementById("resultsStatus");
+  const count = document.getElementById("locationCount");
+
+  if (!grid || !input || !status) return;
+
+  if (!locations.length) {
+    status.textContent = "Locations could not be loaded. Please refresh or contact Noctis Technologies.";
+    if (count) count.textContent = "0";
+    return;
+  }
+
+  if (count) count.textContent = String(locations.length);
+
+  function render(query) {
+    const q = (query || "").trim().toLocaleLowerCase("en-IN");
+    const matches = locations.filter(function (item) {
+      const name = String(item.name || "");
+      const slug = String(item.slug || "");
+      return name.toLocaleLowerCase("en-IN").includes(q) || slug.includes(q);
+    });
+
+    grid.replaceChildren();
+    const fragment = document.createDocumentFragment();
+
+    matches.forEach(function (item) {
+      const card = document.createElement("a");
+      card.className = "city-card";
+      card.href = "#contact";
+      card.dataset.city = item.slug || "";
+      const title = document.createElement("span");
+      title.textContent = item.name || "Location";
+      const details = document.createElement("small");
+      const services = Array.isArray(item.services) ? item.services : [];
+      details.textContent = services.length ? services.join(" · ") : "Contact us to confirm service availability";
+      card.append(title, details);
+      fragment.appendChild(card);
+    });
+
+    grid.appendChild(fragment);
+    status.textContent = matches.length
+      ? "Showing " + matches.length + " of " + locations.length + " locations."
+      : "No matching city or town found. Try another spelling.";
+  }
+
+  input.addEventListener("input", function () { render(input.value); });
+  render("");
+})();
+</script>
+<script>
+const schema={"@context":"https://schema.org","@type":"CollectionPage","name":"Tamil Nadu Service Areas - Noctis Technologies","url":"https://www.noctistechnologies.gt.tc/locations/","about":{"@type":"State","name":"Tamil Nadu"},"publisher":{"@type":"Organization","name":"Noctis Technologies","url":"https://www.noctistechnologies.gt.tc/"}};
+const s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(schema);document.head.appendChild(s);
+</script>
+</body></html>
