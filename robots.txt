@@ -1,0 +1,27 @@
+# NOCTIS TECHNOLOGIES — robots.txt (GitHub Pages)
+# https://www.noctistechnologies.gt.tc/robots.txt
+
+User-agent: *
+Allow: /
+
+# Block internal paths
+Disallow: /api/
+Disallow: /admin/
+
+# Allow all assets
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.woff2$
+Allow: /*.xml$
+
+# Sitemap
+Sitemap: https://www.noctistechnologies.gt.tc/sitemap.xml
+
+# Canonical host
+Host: https://www.noctistechnologies.gt.tc
