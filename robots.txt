@@ -1,0 +1,9 @@
+# Noctis Technologies — GitHub Pages
+User-agent: *
+Allow: /
+
+# Private or non-public paths (if created later)
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://www.noctistechnologies.gt.tc/sitemap.xml
